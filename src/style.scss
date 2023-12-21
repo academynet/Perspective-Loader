@@ -1,0 +1,64 @@
+*  {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body { 
+    background-color: lavender;
+    font-family: sans-serif;
+}
+
+.open {
+    margin: 20vb auto;
+    padding: 4rem 6rem 5rem;
+    width: 300px;
+    border: 0;
+    border-radius: 1rem;
+    background-color: white;
+    box-shadow: rgb(black, 0.1) 0 10px 50px,
+        rgba(black, 0.2) 0 50px 100px -20px,
+        rgba(black, 0.3) 0 30px 60px -30px;
+}
+
+.loader { 
+    --perspective: 50px;
+    --rotation: 50deg;
+    --spinner-dim: 4.5rem;
+    --spinner: purple;
+    --spinner-track: lavender;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    perspective: var(--perspective);
+
+    .spinner {
+        display: block;
+        block-size: var(--spinner-dim);
+        inline-size: var(--spinner-dim);
+
+        border: {
+            width: 8px;
+            style: solid;
+            color: var(--spinner)
+                var(--spinner-track)
+                var(--spinner-track)
+                var(--spinner-track);
+            radius: 50%;
+        }
+
+        transform: rotateX(var(--rotation));
+        transform-style: preserve-3d;
+        animation: rotate 2400ms
+            cubic-bezier(0.7, 0, 0.75, 0.95)
+            infinite;
+    }
+}
+
+@keyframes rotate {
+    to { 
+        transform: rotateX(var(--rotation))
+            rotate(720deg);
+    }
+}
